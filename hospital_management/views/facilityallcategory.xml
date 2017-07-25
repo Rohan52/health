@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <!-- Form View for Facility-->
+       <record id="facility_view_form" model="ir.ui.view">
+            <field name="name">Facility</field>
+            <field name="model">facility</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="facility">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="facility_view_tree" model="ir.ui.view">
+            <field name="name">Facility</field>
+            <field name="model">facility</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Facility">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="facility_action">
+            <field name="name">Facility</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">facility</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <!-- Form View for Food-->
+       <record id="food_view_form" model="ir.ui.view">
+            <field name="name">Food</field>
+            <field name="model">food</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Food">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="code"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="food_view_tree" model="ir.ui.view">
+            <field name="name">Food</field>
+            <field name="model">food</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Food">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="food_action">
+            <field name="name">Food</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">food</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Form View for Room-->
+       <record id="qualification_view_form" model="ir.ui.view">
+            <field name="name">Room</field>
+            <field name="model">room</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Room">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="no"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="room_view_tree" model="ir.ui.view">
+            <field name="name">Room</field>
+            <field name="model">room</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Room">
+                    <field name="name"/>
+                    <field name="no"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="room_action">
+            <field name="name">Room</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>            
+        
+        
+        <!-- Menus -->
+
+         <menuitem
+             id="facilities_menu"
+             name="Facilities"
+             parent = "hospital_menu"
+             />
+
+         <menuitem
+             id="facilities_main_menu"
+             name="Facilities"
+             parent = "facilities_menu"
+             action = "facility_action"/>
+         
+         <menuitem
+             id="food_menu"
+             name="Food"
+             parent = "facilities_menu"
+             action = "food_action"/>
+         
+         <menuitem
+             id="room_menu"
+             name="Room"
+             parent = "facilities_menu"
+             action = "room_action"/>
+        
+</odoo>

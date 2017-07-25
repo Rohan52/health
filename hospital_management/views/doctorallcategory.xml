@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <!-- Form View for Doctor-->
+       <record id="doctor_view_form" model="ir.ui.view">
+            <field name="name">Doctor</field>
+            <field name="model">doctor</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Doctor">
+                    <sheet>
+                        	<field name="photo" widget="image" class="oe_left oe_avatar"/>
+                        <group colspan="4" col="4">
+		                    <field name="unique_id"/>
+		                    <field name="name"/>
+		                    <field name="category"/>
+		                    <field name="experience"/>
+		                    <field name="department"/>
+	                    </group>
+	                    <notebook>
+	                        <page name='page_patient_notes' string="Patient Information">
+                        		<field name="patient_ids"/>
+                    		</page>
+                    		<page name='page_other_notes' string="Other Information">
+                        		<field name="text" placeholder="Other Info"/>
+                    		</page>
+                    		<page name='page_cqd_notes' string="Qualifications">
+                    		    <group colspan="4" col="4">
+	                        		<field name="qualification_ids" widget="many2many_tags"/>
+				                    <field name="degree_ids" widget="many2many_tags"/>
+				                    <field name="college"/>
+			                    </group>
+                    		</page>
+	                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="doctor_view_tree" model="ir.ui.view">
+            <field name="name">Doctor</field>
+            <field name="model">doctor</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Staff">
+                    <field name="unique_id"/>
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="qualification_ids" widget="many2many_tags"/>
+                    <field name="degree_ids" widget="many2many_tags"/>
+                    <field name="college"/>
+                    <field name="experience"/>
+                    <field name="department"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="doctor_action">
+            <field name="name">Doctor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">doctor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <!-- Form View for Category-->
+       <record id="category_view_form" model="ir.ui.view">
+            <field name="name">Category</field>
+            <field name="model">category</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Category">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="code"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="category_view_tree" model="ir.ui.view">
+            <field name="name">Category</field>
+            <field name="model">category</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Category">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="category_action">
+            <field name="name">Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Form View for Qualification-->
+       <record id="qualification_view_form" model="ir.ui.view">
+            <field name="name">Qualification</field>
+            <field name="model">qualification</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Qualification">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="degree_ids" widget="many2many_tags"/>
+		                    <field name="year"/>
+		                    <field name="state"/>
+		                    <field name="college"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="qualification_view_tree" model="ir.ui.view">
+            <field name="name">Qualification</field>
+            <field name="model">qualification</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Qualification">
+                    <field name="name"/>
+                    <field name="degree_ids" widget="many2many_tags"/>
+                    <field name="year"/>
+                    <field name="state"/>
+                    <field name="college"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="qualification_action">
+            <field name="name">Qualification</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qualification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Form View for Degree-->
+       <record id="degree_view_form" model="ir.ui.view">
+            <field name="name">Degree</field>
+            <field name="model">degree</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Degree">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="degree_view_tree" model="ir.ui.view">
+            <field name="name">Degree</field>
+            <field name="model">degree</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Degree">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="degree_action">
+            <field name="name">Degree</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">degree</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <!-- Form View for College-->
+       <record id="college_view_form" model="ir.ui.view">
+            <field name="name">College</field>
+            <field name="model">college</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="College">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="state"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="college_view_tree" model="ir.ui.view">
+            <field name="name">College</field>
+            <field name="model">college</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="College">
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="college_action">
+            <field name="name">College</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">college</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <!-- Form View for Experience-->
+       <record id="experience_view_form" model="ir.ui.view">
+            <field name="name">Experience</field>
+            <field name="model">experience</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Experience">
+                    <sheet>
+                        <group>
+		                    <field name="desc"/>
+		                    <field name="name"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="experience_view_tree" model="ir.ui.view">
+            <field name="name">Experience</field>
+            <field name="model">experience</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Experience">
+                    <field name="desc"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="experience_action">
+            <field name="name">Experience</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">experience</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- Form View for Department-->
+       <record id="department_view_form" model="ir.ui.view">
+            <field name="name">Department</field>
+            <field name="model">department</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Department">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="department_view_tree" model="ir.ui.view">
+            <field name="name">Department</field>
+            <field name="model">department</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Department">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="department_action">
+            <field name="name">Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">department</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+
+        <!-- Menus -->
+
+         <menuitem
+             id="hospital_menu"
+             name="Hospital"
+             />
+
+         <menuitem
+             id="doctor_menu"
+             name="Doctor"
+             parent = "hospital_menu"/>
+         
+         <menuitem
+             id="doctor_main_menu"
+             name="Doctor"
+             parent = "doctor_menu"
+             action = "doctor_action"/>
+
+         <!-- Menus for subject-->
+
+         <menuitem
+             id="category_menu"
+             name="Category"
+             parent="doctor_menu"
+             action= "category_action"/>
+
+         <menuitem
+             id="qualification_menu"
+             name="Qualification"
+             parent="doctor_menu"
+             action="qualification_action"/>
+
+         <menuitem
+             id="degree_menu"
+             name="Degree"
+             parent="doctor_menu"
+             action="degree_action"/>
+
+         <menuitem
+             id="college_menu"
+             name="College"
+             parent="doctor_menu"
+             action="college_action"/>
+
+         <menuitem
+             id="experience_menu"
+             name="Experience"
+             parent="doctor_menu"
+             action="experience_action"/>
+
+         <menuitem
+             id="department_menu"
+             name="Department"
+             parent="doctor_menu"
+             action="department_action"/>
+
+</odoo>

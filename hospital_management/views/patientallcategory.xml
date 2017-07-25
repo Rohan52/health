@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        
+        
+        
+        <!-- Partner Kanban View -->
+        <record model="ir.ui.view" id="patient_kanban_view">
+            <field name="name">patient.kanban</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <kanban class="o_patient_kanban">
+                    <field name="name"/>
+                    <field name="category"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_res_partner_kanban">
+                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                <div class="o_kanban_image">
+                                        <img t-att-src="kanban_image('patient.patient', 'photo', record.id.value)"/>
+                                </div>
+                                <field name="name"/>
+                    			<field name="category"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <!-- Form View for Patient-->
+        
+       <record id="patient_view_form" model="ir.ui.view">
+            <field name="name">Patient</field>
+            <field name="model">patient.patient</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Patient">
+                    <sheet>
+                        <group colspan="10" col="4">
+                            <div>
+                            	<field name="photo" widget="image" class="oe_left oe_avatar"/>
+                            </div>
+                            <group>
+	                        	<field name="unique_id"/>
+			                    <field name="name"/>
+			                    <field name="category" widget="many2many_tags"/>
+		                    </group>
+		                </group>
+                        <group colspan="4" col="4">
+		                    <field name="birthdate"/>
+		                    <field name="deseased_date"/>
+		                    <field name="room_no"/>
+		                    <field name="age"/>
+		                    <field name="address"/>
+		                    <field name="general_info"/>
+		                    <field name="is_deceased"/>
+		                    <field name="marital_status"/>
+		                    <field name="doctorassigned_ids" widget="many2many_tags"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="patient_view_tree" model="ir.ui.view">
+            <field name="name">Patient</field>
+            <field name="model">patient.patient</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Patient">
+                    <field name="unique_id"/>
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="birthdate"/>
+                    <field name="deseased_date"/>
+                    <field name="room_no"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                    <field name="general_info"/>
+                    <field name="is_deceased"/>
+                    <field name="marital_status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="patient_action">
+            <field name="name">Patient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">patient.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        
+        
+        <!-- Form View for Roomno-->
+       <record id="roomno_view_form" model="ir.ui.view">
+            <field name="name">Roomno</field>
+            <field name="model">roomno</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Room Number">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="roomno_view_tree" model="ir.ui.view">
+            <field name="name">Roomno</field>
+            <field name="model">roomno</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Room Number">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="roomno_action">
+            <field name="name">Roomno</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">roomno</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- Form View for Categoty_Patient-->
+       <record id="categorypatient_view_form" model="ir.ui.view">
+            <field name="name">Categorypatient</field>
+            <field name="model">categorypatient</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Type Of Desease">
+                    <sheet>
+                        <group>
+		                    <field name="name"/>
+		                    <field name="code"/>
+	                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="categorypatient_view_tree" model="ir.ui.view">
+            <field name="name">Categorypatient</field>
+            <field name="model">categorypatient</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Type Of Desease">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="categorypatient_action">
+            <field name="name">Categorypatient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">categorypatient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        
+        
+        <!-- Menus -->
+
+         <menuitem
+             id="patient_menu"
+             name="Patient"
+             parent = "hospital_menu"/>
+         
+         <menuitem
+             id="patient_main_menu"
+             name="Patient"
+             action="patient_action"
+             parent = "patient_menu"/>
+         
+         
+         <menuitem
+             id="roomno_menu"
+             name="Roomno"
+             action="roomno_action"
+             parent = "patient_menu"/>
+         
+         <menuitem
+             id="categorypatient_menu"
+             name="Category of Patient"
+             action="categorypatient_action"
+             parent = "patient_menu"/>
+        
+</odoo>

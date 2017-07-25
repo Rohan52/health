@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<template id="report_patient">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <h2>Report title</h2>
+                  <!--   <p>This Patient's name is <span t-field="o.name"/></p> -->
+                    <!-- <p>This Patient's unique id is <span t-field="o.unique_id"/></p>
+                    <p>This Patient's category is is <span t-field="o.category"/></p>
+                    <p>This Patient's birthdate is <span t-field="o.birthdate"/></p>
+                    <p>This Patient's deseased date is <span t-field="o.deseased_date"/></p>
+                    <p>This Patient's room no is <span t-field="o.room_no"/></p>
+                    <p>This Patient's age is <span t-field="o.age"/></p>
+                    <p>This Patient's address is <span t-field="o.address"/></p>
+                    <p>This Patient's general info is <span t-field="o.general_info"/></p>
+                    <p>This Patient is deseased ? <span t-field="o.is_deceased"/></p>
+                    <p>This Patient's marital status is <span t-field="o.marital_status"/></p> -->
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>
