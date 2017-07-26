@@ -89,7 +89,6 @@
                     <field name="unique_id"/>
                     <field name="name"/>
                     <field name="category"/>
-                    <field name="qualification_ids" widget="many2many_tags"/>
                     <field name="degree_ids" widget="many2many_tags"/>
                     <field name="college"/>
                     <field name="experience"/>
