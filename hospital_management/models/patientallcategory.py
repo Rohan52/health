@@ -37,7 +37,17 @@ class Patient(models.Model):
         ('z', 'law marriage'),
     ], )
     
-    doctorassigned_ids = fields.Many2many('doctor', 'patient_doctor_rel', 'patient_id', 'doctor_id', 'Assidned Doctor') 
+    doctorassigned_ids = fields.Many2many('doctor', 'patient_doctor_rel', 'patient_id', 'doctor_id', 'Assidned Doctor')
+    
+    food_id = fields.Many2one('food', string="Food")
+    roomtype_id = fields.Many2one('room', string="Room")
+    facility_id = fields.Many2many('facility', 'patient_facility_rel', 'patient_id', 'facility_id', string="Other Facilities")
+    
+    mobile = fields.Char("Mobile")
+    email = fields.Char("Email")
+    phone = fields.Char("Phone")
+    
+     
 
 class Roomno(models.Model):
     _name = 'roomno'

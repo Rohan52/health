@@ -19,5 +19,5 @@ class Room(models.Model):
     _name='room'
     
     name = fields.Char(string="Type of Room")
-    no = fields.Integer(string="Room No")
+#    no = fields.Integer(string="Room No")
     

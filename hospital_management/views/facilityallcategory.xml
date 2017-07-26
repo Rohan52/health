@@ -90,7 +90,6 @@
                     <sheet>
                         <group>
 		                    <field name="name"/>
-		                    <field name="no"/>
 	                    </group>
                     </sheet>
                 </form>
@@ -104,7 +103,6 @@
             <field name="arch" type="xml">
                 <tree string="Room">
                     <field name="name"/>
-                    <field name="no"/>
                 </tree>
             </field>
         </record>

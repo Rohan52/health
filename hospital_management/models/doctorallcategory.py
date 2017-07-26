@@ -14,10 +14,14 @@ class Doctor(models.Model):
     qualification_ids = fields.Many2many('qualification', 'doctor_qualification_rel', 'doctor_id', 'qualification_id', 'Qualification')
     degree_ids = fields.Many2many('degree','degree_doctor_rel','degree_id','doctor_id', 'Degree')
     college = fields.Many2one('college')
-    experience = fields.Many2one('experience')
+    experience = fields.Char('Experience')
     department = fields.Many2one('department')
     patient_ids = fields.Many2many('patient.patient', 'doctor_patient_rel', 'doctor_id', 'patient_id', 'Patient Details')
     text = fields.Text()
+    
+    mobile = fields.Char("Mobile")
+    email = fields.Char("Email")
+    phone = fields.Char("Phone")
     
 #    def a_method(self):
 #        
@@ -37,15 +41,6 @@ class Category(models.Model):
     code = fields.Char(string="Code")
     
     
-class Qualification(models.Model):
-    _name ='qualification'
-    
-    name = fields.Char()
-    degree_ids = fields.Many2many('doctor','qualification_doctor_rel','qualification_id','doctor_id' , 'Degree')
-    year = fields.Date()
-    state = fields.Many2one('res.country.state', string="State") 
-    college = fields.Many2one('college', string="College") 
-    
 class Degree(models.Model):
     _name = 'degree'
     
@@ -56,12 +51,6 @@ class College(models.Model):
     
     name = fields.Char(string="Name of College")
     state = fields.Many2one('res.country.state', string="State") 
-    
-class Experience(models.Model):
-    _name ='experience'
-    
-    name = fields.Char()
-    desc = fields.Text()
     
     
 class Department(models.Model):
